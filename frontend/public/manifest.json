@@ -1,6 +1,6 @@
 {
-  "short_name": "Simple zip code lookup",
-  "name": "Simple zip code lookup service using React and Typescript",
+  "short_name": "Simple Zip Code Lookup service",
+  "name": "Simple Zip Code Lookup service using React and Typescript",
   "icons": [
     {
       "src": "favicon.ico",
