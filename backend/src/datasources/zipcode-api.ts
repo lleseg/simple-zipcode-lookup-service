@@ -8,8 +8,8 @@ class ZipCodeAPI extends RESTDataSource {
     this.baseURL = 'http://api.zippopotam.us/';
   }
 
-  async getZipCode(countryCode: String, postCode: String) {
-    return this.get(`${countryCode}/${postCode}`);
+  async getZipCode(countryCode: String, zipCode: String) {
+    return this.get(`${countryCode}/${zipCode}`);
   }
 }
 

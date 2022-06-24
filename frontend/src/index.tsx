@@ -1,7 +1,14 @@
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import { ColorModeScript } from "@chakra-ui/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
+
 import App from "./App";
+
+const client = new ApolloClient({
+  uri: "http://localhost:4000",
+  cache: new InMemoryCache(),
+});
 
 const container = document.getElementById("root");
 
@@ -11,8 +18,10 @@ const root = ReactDOM.createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <ColorModeScript />
+    <ApolloProvider client={client}>
+      <ColorModeScript />
 
-    <App />
+      <App />
+    </ApolloProvider>
   </React.StrictMode>
 );

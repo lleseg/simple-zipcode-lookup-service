@@ -5,21 +5,21 @@ const resolvers = {
       _,
       {
         countryCode = 'US',
-        postCode = '90128',
-      }: { countryCode: String; postCode: String },
+        zipCode = '90128',
+      }: { countryCode: String; zipCode: String },
       { dataSources },
     ) => {
       // TODO: add try/catch block
-      const zipCode = await dataSources.zipCodeAPI.getZipCode(
+      const result = await dataSources.zipCodeAPI.getZipCode(
         countryCode,
-        postCode,
+        zipCode,
       );
       // TODO: refactor object format
-      const formattedZipCode = {
-        postCode: zipCode['post code'],
-        country: zipCode.country,
-        countryAbbreviation: zipCode['country abbreviation'],
-        places: zipCode?.places.map((place) => ({
+      const formattedResult = {
+        zipCode: result['post code'],
+        country: result.country,
+        countryAbbreviation: result['country abbreviation'],
+        places: result?.places.map((place) => ({
           placeName: place['place name'],
           longitude: place.longitude,
           state: place.state,
@@ -28,7 +28,7 @@ const resolvers = {
         })),
       };
       // TODO: format the response as a GQL common response
-      return formattedZipCode;
+      return formattedResult;
     },
   },
 };
