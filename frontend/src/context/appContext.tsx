@@ -1,18 +1,43 @@
 /* eslint-disable no-unused-vars */
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, ReactNode, useEffect, useMemo, useState } from "react";
+
+type Place = {
+  __typename: string;
+  city: string;
+  latitude: string;
+  longitude: string;
+  state: string;
+  stateAbbreviation: string;
+};
 
 type Result = {
+  __typename: string;
+  country: string;
+  countryAbbreviation: string;
+  places: Place[];
   zipCode: string;
+};
+
+type ResultData = {
+  zipCode: Result;
+};
+
+type ResultLocalStorage = {
   country: string;
   city: string;
   state: string;
+  zipCode: string;
+};
+
+type AppProps = {
+  children: ReactNode;
 };
 
 export type AppContextType = {
-  last5Results: Result[];
+  last5Results: ResultLocalStorage[];
 
   clearHistory: () => void;
-  updateLast5Results: (newResults: any) => void;
+  updateLast5Results: (newResults: ResultData) => void;
 };
 
 export const AppContext = createContext<AppContextType>({
@@ -21,8 +46,8 @@ export const AppContext = createContext<AppContextType>({
   updateLast5Results: (newResults) => null,
 });
 
-export function AppProvider({ children }: any) {
-  const [last5Results, setLast5Results] = useState<Result[]>(
+export function AppProvider({ children }: AppProps) {
+  const [last5Results, setLast5Results] = useState<ResultLocalStorage[]>(
     JSON.parse(localStorage.getItem("last-5-results") as string) || []
   );
 
@@ -34,12 +59,12 @@ export function AppProvider({ children }: any) {
     setLast5Results([]);
   };
 
-  const updateLast5Results = (newResults: any) => {
+  const updateLast5Results = (newResults: ResultData) => {
     if (!newResults) return;
 
     const newPlaces = newResults?.zipCode?.places?.slice(-5);
 
-    const mappedResults = newPlaces.map((place: any) => ({
+    const mappedResults = newPlaces.map((place: Place) => ({
       zipCode: newResults?.zipCode?.zipCode,
       country: newResults?.zipCode?.country,
       city: place.city,

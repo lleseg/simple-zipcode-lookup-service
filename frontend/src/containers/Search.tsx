@@ -6,8 +6,6 @@ import { ZipCodeForm, ZipCodeInfo } from "../components";
 
 import { AppContext, AppContextType } from "../context/appContext";
 
-export type Maybe<T> = T | null;
-
 type Place = {
   __typename: string;
   city: string;
