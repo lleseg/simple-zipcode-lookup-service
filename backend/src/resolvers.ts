@@ -1,21 +1,33 @@
-// TODO: type everything
+type ZipCodeArgs = { countryCode: string; zipCode: string };
+
+type Place = {
+  city: string;
+  longitude: string;
+  state: string;
+  stateAbbreviation: string;
+  latitude: string;
+};
+
+type Result = {
+  zipCode: string;
+  country: string;
+  countryAbbreviation: string;
+  places: Place[];
+};
+
 const resolvers = {
   Query: {
     zipCode: async (
       _,
-      {
-        countryCode = 'US',
-        zipCode = '90128',
-      }: { countryCode: String; zipCode: String },
+      { countryCode = 'US', zipCode = '90128' }: ZipCodeArgs,
       { dataSources },
-    ) => {
-      // TODO: add try/catch block
+    ): Promise<Result> => {
       const result = await dataSources.zipCodeAPI.getZipCode(
         countryCode,
         zipCode,
       );
-      // TODO: refactor object format
-      const formattedResult = {
+
+      const formattedResult: Result = {
         zipCode: result['post code'],
         country: result.country,
         countryAbbreviation: result['country abbreviation'],
@@ -27,7 +39,7 @@ const resolvers = {
           latitude: place.latitude,
         })),
       };
-      // TODO: format the response as a GQL common response
+
       return formattedResult;
     },
   },
