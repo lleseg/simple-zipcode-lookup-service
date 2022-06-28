@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
 import { createContext, useEffect, useMemo, useState } from "react";
 
-interface IResult {
+type Result = {
   zipCode: string;
   country: string;
   city: string;
   state: string;
-}
+};
 
-type AppContextType = {
-  last5Results: IResult[];
+export type AppContextType = {
+  last5Results: Result[];
 
   clearHistory: () => void;
   updateLast5Results: (newResults: any) => void;
@@ -22,7 +22,7 @@ export const AppContext = createContext<AppContextType>({
 });
 
 export function AppProvider({ children }: any) {
-  const [last5Results, setLast5Results] = useState<IResult[]>(
+  const [last5Results, setLast5Results] = useState<Result[]>(
     JSON.parse(localStorage.getItem("last-5-results") as string) || []
   );
 

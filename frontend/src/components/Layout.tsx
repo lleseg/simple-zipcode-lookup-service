@@ -1,7 +1,11 @@
 import { Container, Grid, Heading } from "@chakra-ui/react";
 import { ReactNode } from "react";
 
-function Layout({ children }: { children: ReactNode }) {
+type AppProps = {
+  children: ReactNode;
+};
+
+function Layout({ children }: AppProps): JSX.Element {
   return (
     <Container maxW="container.xl" centerContent textAlign="center">
       <Grid maxH="100vh" p={8}>

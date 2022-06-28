@@ -21,6 +21,7 @@
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
     "import/extensions": "off",
+    "no-undef": "off",
     "prettier/prettier": "error",
     "react/jsx-filename-extension": "off",
     "react/jsx-props-no-spreading": [
