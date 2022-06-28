@@ -20,7 +20,7 @@ const resolvers = {
         country: result.country,
         countryAbbreviation: result['country abbreviation'],
         places: result?.places.map((place) => ({
-          placeName: place['place name'],
+          city: place['place name'],
           longitude: place.longitude,
           state: place.state,
           stateAbbreviation: place['state abbreviation'],

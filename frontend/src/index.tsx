@@ -1,9 +1,11 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import { ColorModeScript } from "@chakra-ui/react";
+import { ChakraProvider, theme } from "@chakra-ui/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 
-import App from "./App";
+import { History, Search } from "./containers";
+import { Layout } from "./components";
+import { AppProvider } from "./context/appContext";
 
 const client = new ApolloClient({
   uri: "http://localhost:4000",
@@ -19,9 +21,15 @@ const root = ReactDOM.createRoot(container);
 root.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <ColorModeScript />
+      <ChakraProvider theme={theme}>
+        <AppProvider>
+          <Layout>
+            <Search />
 
-      <App />
+            <History />
+          </Layout>
+        </AppProvider>
+      </ChakraProvider>
     </ApolloProvider>
   </React.StrictMode>
 );

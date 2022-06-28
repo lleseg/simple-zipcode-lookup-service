@@ -21,8 +21,8 @@ const typeDefs = gql`
 
   "This is the place information"
   type Place {
-    "This is the place name"
-    placeName: String!
+    "This is the city name"
+    city: String!
     "This is the place longitude"
     longitude: String!
     "This is the place state"
