@@ -3952,6 +3952,11 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
+country-state-picker@^1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/country-state-picker/-/country-state-picker-1.1.5.tgz#b0445501eb042ac62261610d9bbd583f6e3c00eb"
+  integrity sha512-YzQ35FsJG1YHSqHbitFY8ov7H2ghOGmYY1H6+G363J6j9+zxzdvk3jicEvzSmY7E08+2WQqX63jzCJmaRYMYSA==
+
 cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"

@@ -12,6 +12,8 @@ import {
 } from "@chakra-ui/react";
 import { SyntheticEvent } from "react";
 
+import getCountries from "../utils/getCountries";
+
 type AppProps = {
   countryCode: string;
   handleChangeCountry: (e: SyntheticEvent<HTMLSelectElement>) => void;
@@ -58,9 +60,11 @@ function ZipCodeForm({
               defaultValue={countryCode}
               onChange={handleChangeCountry}
             >
-              <option value="ar">Argentina</option>
-
-              <option value="us">United States</option>
+              {getCountries().map((country: any) => (
+                <option key={country.code} value={country.code}>
+                  {country.name}
+                </option>
+              ))}
             </Select>
           </FormControl>
         </WrapItem>
