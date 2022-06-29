@@ -3,34 +3,8 @@ import { Box, Center, Spinner } from "@chakra-ui/react";
 import { SyntheticEvent, useContext, useState } from "react";
 
 import { ZipCodeForm, ZipCodeInfo } from "../components";
-
-import { AppContext, AppContextType } from "../context/appContext";
-
-type Place = {
-  __typename: string;
-  city: string;
-  latitude: string;
-  longitude: string;
-  state: string;
-  stateAbbreviation: string;
-};
-
-type Result = {
-  __typename: string;
-  country: string;
-  countryAbbreviation: string;
-  places: Place[];
-  zipCode: string;
-};
-
-type ResultData = {
-  zipCode: Result;
-};
-
-type ResultVars = {
-  zipCode: string;
-  countryCode: string;
-};
+import { AppContext } from "../context/appContext";
+import { AppContextType, ResultData, ResultVars } from "../types";
 
 const ZIP_CODE = gql`
   query GetZipCode($zipCode: String!, $countryCode: String!) {

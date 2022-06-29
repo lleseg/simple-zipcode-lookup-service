@@ -10,17 +10,9 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
-import { SyntheticEvent } from "react";
 
+import { ZipCodeFormProps } from "../types";
 import getCountries from "../utils/getCountries";
-
-type AppProps = {
-  countryCode: string;
-  handleChangeCountry: (e: SyntheticEvent<HTMLSelectElement>) => void;
-  handleChangeZipCode: (e: SyntheticEvent<HTMLInputElement>) => void;
-  handleSubmit: (e: SyntheticEvent<HTMLButtonElement>) => void;
-  zipCode: string;
-};
 
 function ZipCodeForm({
   countryCode,
@@ -28,7 +20,7 @@ function ZipCodeForm({
   handleChangeZipCode,
   handleSubmit,
   zipCode,
-}: AppProps): JSX.Element {
+}: ZipCodeFormProps): JSX.Element {
   return (
     <VStack spacing={8} mb={8}>
       <Text color="teal.500" fontSize="2xl">

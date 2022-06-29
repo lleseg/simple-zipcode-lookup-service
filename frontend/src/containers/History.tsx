@@ -1,7 +1,8 @@
 import { Button, Text, VStack } from "@chakra-ui/react";
 import { useContext } from "react";
 
-import { AppContext, AppContextType } from "../context/appContext";
+import { AppContext } from "../context/appContext";
+import { AppContextType } from "../types";
 
 function History(): JSX.Element {
   const { clearHistory, last5Results } = useContext<AppContextType>(AppContext);

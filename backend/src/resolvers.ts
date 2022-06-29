@@ -1,19 +1,4 @@
-type ZipCodeArgs = { countryCode: string; zipCode: string };
-
-type Place = {
-  city: string;
-  longitude: string;
-  state: string;
-  stateAbbreviation: string;
-  latitude: string;
-};
-
-type Result = {
-  zipCode: string;
-  country: string;
-  countryAbbreviation: string;
-  places: Place[];
-};
+import { Result, ZipCodeArgs } from './types';
 
 const resolvers = {
   Query: {

@@ -1,44 +1,13 @@
 /* eslint-disable no-unused-vars */
-import { createContext, ReactNode, useEffect, useMemo, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 
-type Place = {
-  __typename: string;
-  city: string;
-  latitude: string;
-  longitude: string;
-  state: string;
-  stateAbbreviation: string;
-};
-
-type Result = {
-  __typename: string;
-  country: string;
-  countryAbbreviation: string;
-  places: Place[];
-  zipCode: string;
-};
-
-type ResultData = {
-  zipCode: Result;
-};
-
-type ResultLocalStorage = {
-  country: string;
-  city: string;
-  state: string;
-  zipCode: string;
-};
-
-type AppProps = {
-  children: ReactNode;
-};
-
-export type AppContextType = {
-  last5Results: ResultLocalStorage[];
-
-  clearHistory: () => void;
-  updateLast5Results: (newResults: ResultData) => void;
-};
+import {
+  AppContextType,
+  AppProps,
+  Place,
+  ResultData,
+  ResultLocalStorage,
+} from "../types";
 
 export const AppContext = createContext<AppContextType>({
   last5Results: [],

@@ -1,27 +1,8 @@
 import { Stack, Text } from "@chakra-ui/react";
 
-type Place = {
-  __typename: string;
-  city: string;
-  latitude: string;
-  longitude: string;
-  state: string;
-  stateAbbreviation: string;
-};
+import { Place, ZipCodeInfoProps } from "../types";
 
-type AppProps = {
-  data: {
-    zipCode: {
-      __typename: string;
-      country: string;
-      countryAbbreviation: string;
-      places: Place[];
-      zipCode: string;
-    };
-  };
-};
-
-function ZipCodeInfo({ data }: AppProps): JSX.Element {
+function ZipCodeInfo({ data }: ZipCodeInfoProps): JSX.Element {
   return (
     <Stack spacing={8} mb={8}>
       <Text color="teal.500" fontSize="2xl">
