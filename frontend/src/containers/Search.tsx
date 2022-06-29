@@ -6,7 +6,7 @@ import { ZipCodeForm, ZipCodeInfo } from "../components";
 import { AppContext } from "../context/appContext";
 import { AppContextType, ResultData, ResultVars } from "../types";
 
-const ZIP_CODE = gql`
+export const ZIP_CODE = gql`
   query GetZipCode($zipCode: String!, $countryCode: String!) {
     zipCode(zipCode: $zipCode, countryCode: $countryCode) {
       country
