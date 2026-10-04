@@ -1,11 +1,3 @@
 # simple-zipcode-lookup-service (backend)
 
-Simple zip code lookup service using React and Typescript.
-
-The app should allow visitors to enter a zip code and receive the zip code info using the free API service http://www.zippopotam.us/ (no API / auth required).
-
-## Run the project
-
-- Open a new terminal.
-- Install the required packages by running `cd backend && yarn`.
-- Start the development server by running `yarn start:dev` (for production, run `yarn start`).
+See the [main README](../README.md) for details and instructions.
