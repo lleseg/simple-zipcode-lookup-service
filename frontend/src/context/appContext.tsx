@@ -9,6 +9,8 @@ import {
   ResultLocalStorage,
 } from "../types";
 
+const MAX_HISTORY_RESULTS = 5;
+
 export const AppContext = createContext<AppContextType>({
   last5Results: [],
   clearHistory: () => null,
@@ -31,18 +33,18 @@ export function AppProvider({ children }: AppProps) {
   const updateLast5Results = (newResults: ResultData) => {
     if (!newResults) return;
 
-    const newPlaces = newResults?.zipCode?.places?.slice(-5);
+    const newPlaces = newResults.zipCode.places.slice(-MAX_HISTORY_RESULTS);
 
     const mappedResults = newPlaces.map((place: Place) => ({
-      zipCode: newResults?.zipCode?.zipCode,
-      country: newResults?.zipCode?.country,
+      zipCode: newResults.zipCode.zipCode,
+      country: newResults.zipCode.country,
       city: place.city,
       state: place.state,
     }));
 
     const newLast5Results = [
       ...mappedResults,
-      ...last5Results.slice(newPlaces.length - 1, 4),
+      ...last5Results.slice(0, MAX_HISTORY_RESULTS - newPlaces.length),
     ];
 
     setLast5Results(newLast5Results);
