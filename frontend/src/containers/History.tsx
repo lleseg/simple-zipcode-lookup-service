@@ -17,20 +17,25 @@ function History(): JSX.Element {
         Your last 5 search results:
       </Text>
 
-      <VStack spacing={4}>
-        {last5Results?.map((result, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <Text key={`${result.city}${index}`}>
-            {result.zipCode},&nbsp;{result.country},&nbsp;{result.city},&nbsp;
-            {result.state}
-          </Text>
-        ))}
-      </VStack>
+      {last5Results.length > 0 ? (
+        <>
+          <VStack spacing={4}>
+            {last5Results?.map((result, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <Text key={`${result.city}${index}`}>
+                {result.zipCode},&nbsp;{result.country},&nbsp;{result.city}
+                ,&nbsp;
+                {result.state}
+              </Text>
+            ))}
+          </VStack>
 
-      {last5Results.length && (
-        <Button colorScheme="teal" size="md" onClick={handleClearHistory}>
-          Clear history
-        </Button>
+          <Button colorScheme="teal" size="md" onClick={handleClearHistory}>
+            Clear history
+          </Button>
+        </>
+      ) : (
+        <Text>You have not performed a search yet!</Text>
       )}
     </VStack>
   );

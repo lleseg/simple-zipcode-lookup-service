@@ -1,6 +1,6 @@
 import { gql, useLazyQuery } from "@apollo/client";
 import { Box, Center, Spinner } from "@chakra-ui/react";
-import { SyntheticEvent, useContext, useState } from "react";
+import { SyntheticEvent, useContext, useEffect, useState } from "react";
 
 import { ZipCodeForm, ZipCodeInfo } from "../components";
 import { AppContext } from "../context/appContext";
@@ -23,7 +23,14 @@ function Search(): JSX.Element {
   const [countryCode, setCountryCode] = useState<string>("US");
   const [zipCode, setZipCode] = useState<string>("");
 
-  const { updateLast5Results } = useContext<AppContextType>(AppContext);
+  const [showError, setShowError] = useState(false);
+
+  const { last5Results, updateLast5Results } =
+    useContext<AppContextType>(AppContext);
+
+  useEffect(() => {
+    if (last5Results.length === 0) setShowError(false);
+  }, [last5Results]);
 
   const resetForm = (): void => {
     setCountryCode("US");
@@ -36,6 +43,9 @@ function Search(): JSX.Element {
   >(ZIP_CODE, {
     onCompleted(newResults) {
       updateLast5Results(newResults);
+    },
+    onError() {
+      setShowError(true);
     },
   });
 
@@ -78,7 +88,7 @@ function Search(): JSX.Element {
         zipCode={zipCode}
       />
 
-      {error && (
+      {error && showError && (
         <Center marginBlock={8} color="red">
           ERROR: Information not found!
         </Center>
