@@ -20,13 +20,13 @@ export const ZIP_CODE = gql`
 `;
 
 function Search(): JSX.Element {
-  const [countryCode, setCountryCode] = useState<string>("us");
+  const [countryCode, setCountryCode] = useState<string>("US");
   const [zipCode, setZipCode] = useState<string>("");
 
   const { updateLast5Results } = useContext<AppContextType>(AppContext);
 
   const resetForm = (): void => {
-    setCountryCode("us");
+    setCountryCode("US");
     setZipCode("");
   };
 
@@ -80,7 +80,7 @@ function Search(): JSX.Element {
 
       {error && (
         <Center marginBlock={8} color="red">
-          ERROR: {error.message}
+          ERROR: Information not found!
         </Center>
       )}
 
