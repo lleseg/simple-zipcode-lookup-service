@@ -11,7 +11,7 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 
-import { ZipCodeFormProps } from "../types";
+import { Country, ZipCodeFormProps } from "../types";
 import getCountries from "../utils/getCountries";
 
 function ZipCodeForm({
@@ -52,7 +52,7 @@ function ZipCodeForm({
               defaultValue={countryCode}
               onChange={handleChangeCountry}
             >
-              {getCountries().map((country: any) => (
+              {getCountries().map((country: Country) => (
                 <option key={country.code} value={country.code}>
                   {country.name}
                 </option>

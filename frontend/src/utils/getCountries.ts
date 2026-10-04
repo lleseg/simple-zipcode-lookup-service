@@ -1,4 +1,6 @@
-function getCountries() {
+import { Country } from "../types";
+
+function getCountries(): Country[] {
   return [
     { name: "American Samoa", code: "AS" },
     { name: "Andorra", code: "AD" },

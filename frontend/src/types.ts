@@ -34,6 +34,11 @@ export type ResultVars = {
   countryCode: string;
 };
 
+export type Country = {
+  code: string;
+  name: string;
+};
+
 export type AppProps = {
   children: ReactNode;
 };
